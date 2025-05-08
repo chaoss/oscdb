@@ -1,0 +1,31 @@
+---
+title: "About"
+format: html
+---
+
+# About Open Source Communities
+
+## Our Mission
+
+The Open Source Communities database aims to connect and highlight vibrant open source ecosystems globally. We believe in fostering collaboration, knowledge sharing, and community building within open source communities.
+
+## Project Goals
+
+- Create a comprehensive directory of open source communities
+- Facilitate connections between communities and contributors
+- Promote open source culture and collaboration
+- Document the growth and impact of open source globally
+
+## Team
+
+This project is maintained by a group of open source enthusiasts. We welcome contributions from anyone interested in supporting open source communities.
+
+## Acknowledgments
+
+We would like to thank all the communities and contributors who have helped build this database. Your participation makes this project possible.
+
+## Contact
+
+For general inquiries or to get involved:
+- Email: [chaossasia@gmail.com](mailto:chaossasia@gmail.com)
+- GitHub: [github.com/chaoss/chaoss-asia](https://github.com/chaoss/chaoss-asia/) 

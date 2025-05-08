@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Open Source Communities",
+    "section": "",
+    "text": "This interactive database showcases open source communities. Use the filters below to explore communities by region, category, or search for specific communities.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe welcome new community submissions! To add your community:\n\nCreate a GitHub Issue using our template\nFill in your community details\nOur team will review and add your community to the database\n\nFor more details, see our Contribution Guidelines."
+  },
+  {
+    "objectID": "index.html#how-to-contribute",
+    "href": "index.html#how-to-contribute",
+    "title": "Open Source Communities",
+    "section": "",
+    "text": "We welcome new community submissions! To add your community:\n\nCreate a GitHub Issue using our template\nFill in your community details\nOur team will review and add your community to the database\n\nFor more details, see our Contribution Guidelines."
+  },
+  {
+    "objectID": "communities/index.html",
+    "href": "communities/index.html",
+    "title": "Communities",
+    "section": "",
+    "text": "Browse through our comprehensive list of open source communities. Use the filters below to find communities by region or category.\n\n\n\n\n\n\n\n\n\n\n\nIf your community is not listed, you can add it by: 1. Creating a GitHub Issue using our template 2. Submitting a Pull Request with your community details\nSee our Contribution Guidelines for more information."
+  },
+  {
+    "objectID": "communities/index.html#how-to-add-your-community",
+    "href": "communities/index.html#how-to-add-your-community",
+    "title": "Communities",
+    "section": "",
+    "text": "If your community is not listed, you can add it by: 1. Creating a GitHub Issue using our template 2. Submitting a Pull Request with your community details\nSee our Contribution Guidelines for more information."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "The Open Source Communities database aims to connect and highlight vibrant open source ecosystems globally. We believe in fostering collaboration, knowledge sharing, and community building within open source communities.\n\n\n\n\nCreate a comprehensive directory of open source communities\nFacilitate connections between communities and contributors\nPromote open source culture and collaboration\nDocument the growth and impact of open source globally\n\n\n\n\nThis project is maintained by a group of open source enthusiasts. We welcome contributions from anyone interested in supporting open source communities.\n\n\n\nWe would like to thank all the communities and contributors who have helped build this database. Your participation makes this project possible.\n\n\n\nFor general inquiries or to get involved: - Email: chaossasia@gmail.com - GitHub: github.com/chaoss/chaoss-asia"
+  },
+  {
+    "objectID": "about.html#our-mission",
+    "href": "about.html#our-mission",
+    "title": "About",
+    "section": "",
+    "text": "The Open Source Communities database aims to connect and highlight vibrant open source ecosystems globally. We believe in fostering collaboration, knowledge sharing, and community building within open source communities."
+  },
+  {
+    "objectID": "about.html#project-goals",
+    "href": "about.html#project-goals",
+    "title": "About",
+    "section": "",
+    "text": "Create a comprehensive directory of open source communities\nFacilitate connections between communities and contributors\nPromote open source culture and collaboration\nDocument the growth and impact of open source globally"
+  },
+  {
+    "objectID": "about.html#team",
+    "href": "about.html#team",
+    "title": "About",
+    "section": "",
+    "text": "This project is maintained by a group of open source enthusiasts. We welcome contributions from anyone interested in supporting open source communities."
+  },
+  {
+    "objectID": "about.html#acknowledgments",
+    "href": "about.html#acknowledgments",
+    "title": "About",
+    "section": "",
+    "text": "We would like to thank all the communities and contributors who have helped build this database. Your participation makes this project possible."
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "",
+    "text": "For general inquiries or to get involved: - Email: chaossasia@gmail.com - GitHub: github.com/chaoss/chaoss-asia"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "",
+    "text": "This project is open source and available under the MIT License. See the LICENSE file for details."
+  },
+  {
+    "objectID": "contribute.html",
+    "href": "contribute.html",
+    "title": "Contributing",
+    "section": "",
+    "text": "Thank you for your interest in contributing to our database of open source communities! This document provides guidelines for adding new communities and making other contributions.\n\n\n\n\n\nGo to the Issues tab\nClick “New Issue”\nSelect the “Community Submission” template\nFill in the following information:\n\nCommunity Name\nDescription (2-3 sentences about the community)\nWebsite URL\nRegion (e.g., Europe, Americas, Africa, Asia)\nCategory (e.g., Community, Conference, Association)\n\n\n\n\n\n\nFork the repository\nAdd your community to data/communities.csv following the format:\nname,description,website,region,category,country,city_state,member_count,status,type\nCreate a pull request with a clear description of your changes\n\n\n\n\n\n\nName: Official name of the community\nDescription: Brief description (2-3 sentences)\nWebsite: Full URL including https://\nRegion: One of the supported regions in the dataset\nCategory: One of: Community, Conference, Association, General\n\n\n\n\nIf you’d like to contribute code:\n\nFork the repository\nCreate a new branch for your feature\nMake your changes\nSubmit a pull request\n\n\n\n\n\nUse consistent formatting in the CSV file\nKeep descriptions concise but informative\nUse proper capitalization for community names\nEnsure all URLs are valid and accessible\n\n\n\n\nAll submissions will be reviewed by the maintainers. We may: - Request additional information - Suggest edits to the submission - Ask for clarification\n\n\n\nIf you have any questions about contributing, please open an issue or contact the maintainers."
+  },
+  {
+    "objectID": "contribute.html#adding-a-new-community",
+    "href": "contribute.html#adding-a-new-community",
+    "title": "Contributing",
+    "section": "",
+    "text": "Go to the Issues tab\nClick “New Issue”\nSelect the “Community Submission” template\nFill in the following information:\n\nCommunity Name\nDescription (2-3 sentences about the community)\nWebsite URL\nRegion (e.g., Europe, Americas, Africa, Asia)\nCategory (e.g., Community, Conference, Association)\n\n\n\n\n\n\nFork the repository\nAdd your community to data/communities.csv following the format:\nname,description,website,region,category,country,city_state,member_count,status,type\nCreate a pull request with a clear description of your changes"
+  },
+  {
+    "objectID": "contribute.html#data-format-guidelines",
+    "href": "contribute.html#data-format-guidelines",
+    "title": "Contributing",
+    "section": "",
+    "text": "Name: Official name of the community\nDescription: Brief description (2-3 sentences)\nWebsite: Full URL including https://\nRegion: One of the supported regions in the dataset\nCategory: One of: Community, Conference, Association, General"
+  },
+  {
+    "objectID": "contribute.html#code-contributions",
+    "href": "contribute.html#code-contributions",
+    "title": "Contributing",
+    "section": "",
+    "text": "If you’d like to contribute code:\n\nFork the repository\nCreate a new branch for your feature\nMake your changes\nSubmit a pull request"
+  },
+  {
+    "objectID": "contribute.html#style-guide",
+    "href": "contribute.html#style-guide",
+    "title": "Contributing",
+    "section": "",
+    "text": "Use consistent formatting in the CSV file\nKeep descriptions concise but informative\nUse proper capitalization for community names\nEnsure all URLs are valid and accessible"
+  },
+  {
+    "objectID": "contribute.html#review-process",
+    "href": "contribute.html#review-process",
+    "title": "Contributing",
+    "section": "",
+    "text": "All submissions will be reviewed by the maintainers. We may: - Request additional information - Suggest edits to the submission - Ask for clarification"
+  },
+  {
+    "objectID": "contribute.html#questions",
+    "href": "contribute.html#questions",
+    "title": "Contributing",
+    "section": "",
+    "text": "If you have any questions about contributing, please open an issue or contact the maintainers."
+  }
+]

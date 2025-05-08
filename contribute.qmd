@@ -1,0 +1,66 @@
+---
+title: "Contributing"
+format: html
+---
+
+# Contributing to Open Source Communities
+
+Thank you for your interest in contributing to our database of open source communities! This document provides guidelines for adding new communities and making other contributions.
+
+## Adding a New Community
+
+### Option 1: Create a GitHub Issue
+
+1. Go to the [Issues](https://github.com/chaoss/chaoss-asia/issues) tab
+2. Click "New Issue"
+3. Select the "Community Submission" template
+4. Fill in the following information:
+   - Community Name
+   - Description (2-3 sentences about the community)
+   - Website URL
+   - Region (e.g., Europe, Americas, Africa, Asia)
+   - Category (e.g., Community, Conference, Association)
+
+### Option 2: Submit a Pull Request
+
+1. Fork the repository
+2. Add your community to `data/communities.csv` following the format:
+   ```csv
+   name,description,website,region,category,country,city_state,member_count,status,type
+   ```
+3. Create a pull request with a clear description of your changes
+
+## Data Format Guidelines
+
+- **Name**: Official name of the community
+- **Description**: Brief description (2-3 sentences)
+- **Website**: Full URL including https://
+- **Region**: One of the supported regions in the dataset
+- **Category**: One of: Community, Conference, Association, General
+
+## Code Contributions
+
+If you'd like to contribute code:
+
+1. Fork the repository
+2. Create a new branch for your feature
+3. Make your changes
+4. Submit a pull request
+
+## Style Guide
+
+- Use consistent formatting in the CSV file
+- Keep descriptions concise but informative
+- Use proper capitalization for community names
+- Ensure all URLs are valid and accessible
+
+## Review Process
+
+All submissions will be reviewed by the maintainers. We may:
+- Request additional information
+- Suggest edits to the submission
+- Ask for clarification
+
+## Questions?
+
+If you have any questions about contributing, please [open an issue](https://github.com/chaoss/chaoss-asia/issues) or contact the maintainers. 

@@ -1,0 +1,65 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!templates/"
+  preview:
+    port: 4200
+    browser: true
+  resources:
+    - CNAME
+    - .nojekyll
+
+execute:
+  freeze: false  # Disable caching
+  cache: false   # Disable caching
+  echo: false
+  warning: false
+  message: false
+
+website:
+  title: "Open Source Communities"
+  site-url: "https://chaoss.github.io/open-source-in-asia"
+  repo-url: "https://github.com/chaoss/oscdb"
+  repo-actions: [edit, issue]
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: communities/index.qmd
+        text: Communities
+      - href: contribute.qmd
+        text: Contribute
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/chaoss/chaoss-asia/
+        aria-label: GitHub
+  page-navigation: true
+
+format:
+  html:
+    theme: cosmo
+    css:
+      - styles/custom.css
+      - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+    toc: true
+    toc-location: right
+    code-fold: true
+    code-tools: true
+    include-after-body: footer.html
+    mainfont: "Segoe UI, system-ui, -apple-system, sans-serif"
+    highlight-style: github
+    html-math-method: katex
+    self-contained: false
+    smooth-scroll: true
+    citations-hover: true
+    footnotes-hover: true
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px 

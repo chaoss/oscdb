@@ -1,0 +1,573 @@
+/* Custom styles for Open Source Communities */
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --background-color: #f8f9fa;
+  --text-color: #2c3e50;
+  --navbar-height: 70px;
+  --nav-text-color: rgba(255, 255, 255, 0.6);
+  --toc-text-color: #2c3e50;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+  padding-top: calc(var(--navbar-height) + 30px);
+  overflow-x: hidden;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Enhanced Navbar Styling */
+.navbar {
+  background-color: var(--primary-color) !important;
+  height: var(--navbar-height);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--nav-text-color) !important;
+  padding: 0.5rem 1rem !important;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.nav-link:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  opacity: 1;
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+  color: white !important;
+  opacity: 1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.github-link {
+  color: var(--nav-text-color);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.github-link:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+/* Content Styling */
+h1, h2, h3 {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+h1 {
+  margin-top: 80px !important;
+  color: #000 !important;
+  border-bottom: none;
+  padding-bottom: 10px;
+  font-size: 2rem !important;
+}
+
+h2 {
+  margin-top: 60px !important;
+  color: #222 !important;
+  border-bottom: none;
+  padding-bottom: 8px;
+  font-size: 1.5rem !important;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Table of Contents */
+.toc {
+  position: sticky;
+  top: calc(var(--navbar-height) + 20px);
+  max-height: calc(100vh - var(--navbar-height) - 40px);
+  overflow-y: auto;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-left: 2px solid var(--accent-color);
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+}
+
+.toc nav {
+  background: transparent;
+}
+
+/* TOC Links */
+.toc a {
+  color: #333 !important;
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin: 4px 0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+  background-color: transparent;
+}
+
+.toc a:hover {
+  color: #000 !important;
+  background-color: rgba(52, 152, 219, 0.15);
+  transform: translateX(3px);
+  text-decoration: none !important;
+}
+
+/* Active TOC link */
+.toc .active a {
+  color: white !important;
+  background-color: var(--secondary-color) !important;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* TOC Heading Styles */
+.toc-section-number {
+  opacity: 0.7;
+  margin-right: 0.75rem;
+  font-weight: bold;
+}
+
+/* Indent levels */
+.toc ul {
+  list-style: none;
+  padding-left: 0.5rem;
+  margin-bottom: 0;
+}
+
+.toc > ul {
+  padding-left: 0;
+}
+
+.toc li {
+  margin: 8px 0;
+}
+
+/* DataTable customization */
+.dataTables_wrapper {
+  margin: 2rem 0;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dataTables_filter input {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+/* Format filter styling */
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.filter-container label {
+  font-weight: 500;
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.filter-container select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.filter-container select:hover,
+.filter-container select:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+/* Map container */
+#map {
+  height: 600px;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Map markers and popups */
+.leaflet-popup-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.leaflet-popup-content h4 {
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+}
+
+.leaflet-container {
+  font: inherit !important;
+}
+
+/* Ensure table doesn't overflow */
+.datatables {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.dataTable {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.footer a {
+  color: var(--nav-text-color);
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding-top: calc(var(--navbar-height) + 15px);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    margin-top: 40px !important;
+    font-size: 1.6rem !important;
+  }
+  
+  h2 {
+    margin-top: 30px !important;
+    font-size: 1.3rem !important;
+  }
+  
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+  
+  .nav-link {
+    padding: 0.4rem !important;
+    font-size: 0.9rem;
+  }
+  
+  main {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .toc {
+    position: static;
+    max-height: none;
+    border-left: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: 100%;
+  }
+  
+  /* Table enhancements for mobile */
+  .dataTables_wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.5rem -0.5rem;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .dataTable {
+    width: 100% !important;
+    font-size: 0.85rem;
+  }
+  
+  .dataTables_filter {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .dataTables_filter input {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    height: 35px;
+  }
+  
+  .dataTables_info, .dataTables_paginate {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .paginate_button {
+    padding: 6px 10px !important;
+  }
+  
+  /* Improve map responsiveness */
+  .leaflet-container {
+    height: 400px !important;
+    font-size: 0.9rem;
+  }
+  
+  .leaflet-popup-content {
+    max-width: 200px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-size: 0.85rem;
+  }
+  
+  /* Footer improvements */
+  .footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer .col-md-4 {
+    margin-bottom: 1.25rem;
+  }
+  
+  .footer h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+  
+  .filter-container label {
+    margin-bottom: 5px;
+  }
+  
+  .filter-container select {
+    width: 100%;
+  }
+  
+  .format-select {
+    font-size: 0.85rem;
+    padding: 3px 6px;
+  }
+  
+  .header-filter {
+    font-size: 0.75rem;
+    padding: 2px;
+    margin-left: 3px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+    padding-top: calc(var(--navbar-height) + 10px);
+  }
+  
+  h1 {
+    font-size: 1.4rem !important;
+    margin-top: 30px !important;
+  }
+  
+  h2 {
+    font-size: 1.2rem !important;
+    margin-top: 25px !important;
+  }
+  
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  
+  .dataTable {
+    font-size: 0.8rem;
+  }
+  
+  .container {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  
+  .leaflet-container {
+    height: 300px !important;
+  }
+}
+
+/* Fix for title-block-header */
+#title-block-header {
+  margin-block-end: 1rem;
+  margin-top: 2rem;
+  border-bottom: none !important;
+}
+
+#title-block-header::after {
+  content: none !important;
+  display: none !important;
+  height: 0 !important;
+  border: none !important;
+}
+
+.title {
+  border-bottom: none !important;
+}
+
+/* Format dropdown styling in tables */
+.format-select {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.format-select:hover {
+  border-color: var(--secondary-color);
+}
+
+.format-select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+}
+
+/* Style for each option */
+.format-select option {
+  padding: 6px;
+}
+
+/* Format header filter dropdown */
+.header-filter {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.header-filter:hover, 
+.header-filter:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+table.dataTable thead th {
+  position: relative;
+}
+
+/* Format filter dropdown in filter row */
+.filters select {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .filters select {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+} 
