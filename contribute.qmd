@@ -11,7 +11,7 @@ Thank you for your interest in contributing to our database of open source commu
 
 ### Option 1: Create a GitHub Issue
 
-1. Go to the [Issues](https://github.com/chaoss/chaoss-asia/issues) tab
+1. Go to the [Issues](https://github.com/chaoss/oscdb/issues) tab
 2. Click "New Issue"
 3. Select the "Community Submission" template
 4. Fill in the following information:
@@ -63,4 +63,4 @@ All submissions will be reviewed by the maintainers. We may:
 
 ## Questions?
 
-If you have any questions about contributing, please [open an issue](https://github.com/chaoss/chaoss-asia/issues) or contact the maintainers. 
+If you have any questions about contributing, please [open an issue](https://github.com/chaoss/oscdb/issues) or contact the maintainers. 

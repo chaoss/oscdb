@@ -1,1 +1,1 @@
-Sitemap: https://chaoss.github.io/open-source-in-asia/sitemap.xml
+Sitemap: https://chaoss.github.io/oscdb/sitemap.xml

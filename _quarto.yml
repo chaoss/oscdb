@@ -20,7 +20,7 @@ execute:
 
 website:
   title: "Open Source Communities"
-  site-url: "https://chaoss.github.io/open-source-in-asia"
+  site-url: "https://chaoss.github.io/oscdb"
   repo-url: "https://github.com/chaoss/oscdb"
   repo-actions: [edit, issue]
   navbar:
@@ -37,7 +37,7 @@ website:
         text: About
     right:
       - icon: github
-        href: https://github.com/chaoss/chaoss-asia/
+        href: https://github.com/chaoss/oscdb/
         aria-label: GitHub
   page-navigation: true
 

@@ -27,5 +27,4 @@ We would like to thank all the communities and contributors who have helped buil
 ## Contact
 
 For general inquiries or to get involved:
-- Email: [chaossasia@gmail.com](mailto:chaossasia@gmail.com)
-- GitHub: [github.com/chaoss/chaoss-asia](https://github.com/chaoss/chaoss-asia/) 
+- GitHub: [github.com/chaoss/oscdb](https://github.com/chaoss/oscdb/) 
