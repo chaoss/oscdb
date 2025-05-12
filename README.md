@@ -62,7 +62,7 @@ This project uses:
 1. Clone this repository
    ```bash
    git clone https://github.com/chaoss/oscdb.git
-   cd open-source-in-asia
+   cd oscdb
    ```
 
 2. Install required R packages
