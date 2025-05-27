@@ -1,0 +1,353 @@
+---
+title: "Open Source Communities"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(DT)
+library(leaflet)
+library(htmltools)
+library(httr)
+library(jsonlite)
+
+# Read communities data
+communities <- read_csv("data/communities.csv")
+
+# Make website URLs clickable with proper format
+communities <- communities %>%
+  mutate(website_display = ifelse(
+    startsWith(website, "http"),
+    paste0("<a href='", website, "' target='_blank'>", website, "</a>"),
+    paste0("<a href='https://", website, "' target='_blank'>", website, "</a>")
+  ))
+
+# Select display columns
+display_communities <- communities %>%
+  select(name, description, website_display, region, category, format)
+
+# Create format options for filtering
+format_options <- communities %>%
+  distinct(format) %>%
+  pull()
+
+# Fallback coordinates by region (as a safety net)
+fallback_coords <- tribble(
+  ~region, ~lat, ~lng,
+  "Eastern Asia", 35.0, 115.0,
+  "South-Eastern Asia", 10.0, 106.0,
+  "Southern Asia", 23.0, 80.0,
+  "Western Asia", 35.0, 40.0,
+  "Central Asia", 45.0, 68.0,
+  "Other", 20.0, 0.0
+)
+
+# Fallback coordinates for specific countries
+country_coords <- tribble(
+  ~country, ~lat, ~lng,
+  "India", 20.5937, 78.9629,
+  "Japan", 36.2048, 138.2529,
+  "Singapore", 1.3521, 103.8198,
+  "South Korea", 35.9078, 127.7669,
+  "China", 35.8617, 104.1954,
+  "Taiwan", 23.5937, 121.0254,
+  "Indonesia", -2.4833, 117.8902,
+  "Malaysia", 4.2105, 101.9758,
+  "Vietnam", 14.0583, 108.2772,
+  "Thailand", 15.8700, 100.9925,
+  "Pakistan", 30.3753, 69.3451,
+  "Bangladesh", 23.6850, 90.3563,
+  "Nepal", 28.3949, 84.1240,
+  "Sri Lanka", 7.8731, 80.7718,
+  "United Arab Emirates", 23.4241, 53.8478,
+  "Saudi Arabia", 23.8859, 45.0792,
+  "Azerbaijan", 40.1431, 47.5769
+)
+
+# Fallback coordinates for major cities
+city_coords <- tribble(
+  ~city, ~lat, ~lng,
+  "New Delhi", 28.6139, 77.2090,
+  "Mumbai", 19.0760, 72.8777,
+  "Bangalore", 12.9716, 77.5946,
+  "Tokyo", 35.6762, 139.6503,
+  "Singapore", 1.3521, 103.8198,
+  "Seoul", 37.5665, 126.9780,
+  "Hong Kong", 22.3193, 114.1694,
+  "Dubai", 25.2048, 55.2708,
+  "Taipei", 25.0330, 121.5654,
+  "Kolkata", 22.5726, 88.3639,
+  "Hyderabad", 17.3850, 78.4867,
+  "Chennai", 13.0827, 80.2707,
+  "Pune", 18.5204, 73.8567,
+  "Ahmedabad", 23.0225, 72.5714,
+  "Kochi", 9.9312, 76.2673,
+  "Lahore", 31.5204, 74.3587,
+  "Islamabad", 33.6007, 73.0679,
+  "Kathmandu", 27.7172, 85.3240,
+  "Abu Dhabi", 24.4539, 54.3773,
+  "Jakarta", -6.2088, 106.8456
+)
+
+# Improved geocoding function using Nominatim API with fallbacks
+geocode_location <- function(location_str, city, country, region) {
+  # Rate limiting - be nice to the API
+  Sys.sleep(0.5)
+  
+  # Try API first if we have a location string
+  if (!is.na(location_str) && location_str != "") {
+    # Encode the location string for URL
+    encoded_loc <- URLencode(location_str, reserved = TRUE)
+    
+    # Build the URL
+    url <- paste0("https://nominatim.openstreetmap.org/search?q=", encoded_loc, "&format=json&limit=1")
+    
+    # Set a user agent as required by Nominatim usage policy
+    headers <- c("User-Agent" = "OpenSourceCommunities/1.0")
+    
+    # Make the request
+    response <- tryCatch({
+      GET(url, add_headers(.headers = headers))
+    }, error = function(e) {
+      message("Error making request: ", e$message)
+      return(NULL)
+    })
+    
+    # Check for successful response
+    if (!is.null(response) && status_code(response) == 200) {
+      # Parse the JSON response
+      result <- tryCatch({
+        fromJSON(content(response, "text", encoding = "UTF-8"))
+      }, error = function(e) {
+        message("Error parsing response: ", e$message)
+        return(NULL)
+      })
+      
+      # Extract latitude and longitude if available
+      if (!is.null(result) && length(result) > 0 && nrow(result) > 0) {
+        return(c(as.numeric(result$lat[1]), as.numeric(result$lon[1])))
+      }
+    }
+  }
+  
+  # Fallback 1: Check if we have coordinates for this specific city
+  if (!is.na(city) && city != "") {
+    # Look for exact match first
+    city_match <- city_coords %>% filter(city == !!city)
+    if (nrow(city_match) > 0) {
+      return(c(city_match$lat[1], city_match$lng[1]))
+    }
+    
+    # Then try partial match (e.g., "Bengaluru" might match "Bangalore")
+    for (i in 1:nrow(city_coords)) {
+      if (str_detect(tolower(city), tolower(city_coords$city[i])) || 
+          str_detect(tolower(city_coords$city[i]), tolower(city))) {
+        return(c(city_coords$lat[i], city_coords$lng[i]))
+      }
+    }
+  }
+  
+  # Fallback 2: Use country coordinates
+  if (!is.na(country) && country != "") {
+    country_match <- country_coords %>% filter(country == !!country)
+    if (nrow(country_match) > 0) {
+      return(c(country_match$lat[1], country_match$lng[1]))
+    }
+  }
+  
+  # Fallback 3: Use region coordinates as last resort
+  if (!is.na(region) && region != "") {
+    region_match <- fallback_coords %>% filter(region == !!region)
+    if (nrow(region_match) > 0) {
+      return(c(region_match$lat[1], region_match$lng[1]))
+    }
+  }
+  
+  # Ultimate fallback: return a default location
+  return(c(20.0, 0.0))  # Somewhere in the world
+}
+
+# Process communities for mapping
+communities_with_coords <- communities %>%
+  # Create a location string combining city and country
+  mutate(
+    location = ifelse(
+      !is.na(city_state) & city_state != "", 
+      paste(city_state, country, sep = ", "),
+      country
+    ),
+    # Extract city name from city_state (before comma if present)
+    city = str_trim(str_split_fixed(city_state, ",", 2)[,1])
+  )
+
+# Cache for geocoding results to avoid duplicate API calls
+geocode_cache <- list()
+
+# Get coordinates for each community - ensure ALL communities have coordinates
+communities_with_coords <- communities_with_coords %>%
+  mutate(
+    coordinates = pmap_chr(list(location, city, country, region), function(loc, cty, cntry, reg) {
+      # Create a cache key
+      cache_key <- paste(loc, cty, cntry, reg, sep = "||")
+      
+      # Check cache first
+      if (!is.null(geocode_cache[[cache_key]])) {
+        return(geocode_cache[[cache_key]])
+      }
+      
+      # Get coordinates with fallbacks and cache result
+      coords <- geocode_location(loc, cty, cntry, reg)
+      result <- paste(coords[1], coords[2], sep = "|")
+      geocode_cache[[cache_key]] <- result
+      return(result)
+    }),
+    lat = as.numeric(str_split_fixed(coordinates, "\\|", 2)[,1]),
+    lng = as.numeric(str_split_fixed(coordinates, "\\|", 2)[,2]),
+    # Add a flag to identify whether coordinates are from API or fallback
+    is_approximate = is.na(lat) | is.na(lng) | 
+                    (lat %in% fallback_coords$lat & lng %in% fallback_coords$lng) |
+                    (lat %in% country_coords$lat & lng %in% country_coords$lng)
+  )
+
+# Ensure we have coordinates for all communities
+communities_with_coords <- communities_with_coords %>%
+  mutate(
+    lat = ifelse(is.na(lat), 20.0, lat),
+    lng = ifelse(is.na(lng), 0.0, lng)
+  )
+
+# Define region colors for the map
+region_colors <- tribble(
+  ~region, ~color,
+  "Eastern Asia", "#e74c3c",  # Red
+  "South-Eastern Asia", "#3498db",  # Blue
+  "Southern Asia", "#2ecc71",  # Green
+  "Western Asia", "#9b59b6",  # Purple
+  "Central Asia", "#f1c40f",  # Yellow
+  "Other", "#7f8c8d"  # Grey for any undefined regions
+)
+
+# Add color to communities based on region
+communities_with_coords <- communities_with_coords %>%
+  left_join(region_colors, by = "region") %>%
+  mutate(color = ifelse(is.na(color), "#7f8c8d", color))  # Default color for undefined regions
+```
+
+::: {.container .mt-6 .pt-6}
+# {.mb-4 .border-0}
+
+::: {.mb-5}
+This interactive database showcases open source communities. Use the filters below to explore communities by region, category, or search for specific communities.
+:::
+
+## Interactive Database {.mt-5 .mb-4}
+
+```{r}
+#| label: datatable
+#| output: html
+datatable(
+  display_communities,
+  filter = list(
+    position = "top",
+    clear = FALSE,
+    plain = FALSE
+  ),
+  options = list(
+    pageLength = 10,
+    autoWidth = FALSE,
+    scrollX = FALSE,
+    columnDefs = list(
+      list(width = '17%', targets = 0),  # name
+      list(width = '30%', targets = 1),  # description
+      list(width = '13%', targets = 2, 
+           render = JS("function(data, type, row) { return type === 'display' ? data : data.replace(/<.*?>/g, ''); }")),  # website
+      list(width = '13%', targets = 3),  # region
+      list(width = '13%', targets = 4),  # category
+      list(width = '10%', targets = 5)   # format
+    ),
+    # Custom filter for the format column
+    initComplete = JS("
+      function(settings, json) {
+        var table = this.api();
+        
+        // Create select filter for format column (6th column, index 5)
+        var formatColumn = table.column(5);
+        var formatSelect = $('<select><option value=\"\">All</option><option value=\"in-person\">In-Person</option><option value=\"virtual\">Virtual</option><option value=\"hybrid\">Hybrid</option></select>')
+          .appendTo($(formatColumn.header()).closest('tr').siblings('.filters').children().eq(5).empty())
+          .on('change', function() {
+            formatColumn
+              .search($(this).val() ? '^' + $(this).val() + '$' : '', true, false)
+              .draw();
+          });
+      }
+    ")
+  ),
+  escape = FALSE  # Important: Allow HTML in the table
+)
+```
+
+## Community Map {.mt-5 .mb-4}
+
+```{r}
+#| label: map
+#| output: html
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(lng = 80, lat = 30, zoom = 3) %>%
+  # Add markers for each community - ALL communities should appear now
+  addCircleMarkers(
+    data = communities_with_coords,
+    lng = ~lng,
+    lat = ~lat,
+    radius = ~ifelse(is_approximate, 8, 6),  # Larger for approximate locations
+    color = ~color,
+    stroke = TRUE,
+    weight = 1,
+    opacity = 1,
+    fillOpacity = ~ifelse(is_approximate, 0.5, 0.7),  # Less opacity for approximate locations
+    popup = ~paste0(
+      "<h4>", name, "</h4>",
+      "<p>", description, "</p>",
+      "<p><strong>Region:</strong> ", region, "</p>",
+      "<p><strong>Format:</strong> ", format, "</p>",
+      ifelse(is_approximate, "<p><em>Note: Location is approximate</em></p>", ""),
+      ifelse(!is.na(website) & website != "", 
+             paste0("<p><a href='", 
+                    ifelse(startsWith(website, "http"), 
+                           website, 
+                           paste0("https://", website)), 
+                    "' target='_blank'>Visit Website</a></p>"), 
+             "")
+    ),
+    clusterOptions = markerClusterOptions(
+      showCoverageOnHover = TRUE,
+      zoomToBoundsOnClick = TRUE,
+      spiderfyOnMaxZoom = TRUE
+    )
+  ) %>%
+  # Add region legend
+  addLegend(
+    position = "bottomright",
+    colors = region_colors$color,
+    labels = region_colors$region,
+    title = "Regions",
+    opacity = 0.7
+  )
+```
+
+## How to Contribute {.mt-5 .mb-4}
+
+We welcome new community submissions! To add your community:
+
+1. Create a GitHub Issue using our template
+2. Fill in your community details
+3. Our team will review and add your community to the database
+
+For more details, see our [Contribution Guidelines](contribute.html).
+:::
