@@ -28,7 +28,7 @@ body:
       label: Website or Link
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: region
     attributes:
       label: Region
