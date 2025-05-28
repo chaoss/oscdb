@@ -1,0 +1,70 @@
+name: Community Submission
+description: Submit your community to be included in our listings or initiatives
+title: "[Community Submission] <Community Name>"
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🙌 Thank you for submitting your community! Please complete the form below with the required information
+  - type: input
+    id: community-name
+    attributes:
+      label: Community Name
+      placeholder: e.g Awesome Dev Asia 😎
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe the purpose or focus of your community.
+      placeholder: e.g A group of developers meeting monthly to discuss cloud-native 🧠
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Website or Link
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: Region
+      options:
+        - Eastern Asia
+        - South-Eastern Asia
+        - North-Eastern Asia
+        - Western Asia
+        - Southern Asia
+        - South-Western Asia
+        - Northern Asia
+        - Central Asia
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Community Category
+      options:
+        - 🎓 Academic Research 
+        - 🧠 AI / ML
+        - 👩‍💼 Business
+        - ☁️ Cloud-native
+        - 🥑 Community-building   
+        - 💚 Non-profit
+        - 📢 Outreach
+        - 👀 Other
+    validations:
+      required: true
+  - type: dropdown
+    id: format
+    attributes:
+      label: Format
+      options:
+        - 🧑‍🏫 In-person
+        - 👩‍💻 Virtual
+        - 👀 Hybrid
+    validations:
+      required: true
