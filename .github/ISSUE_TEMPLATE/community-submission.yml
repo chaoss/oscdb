@@ -41,6 +41,21 @@ body:
         - South-Western Asia
         - Northern Asia
         - Central Asia
+        - Northern Europe
+        - Southern Europe
+        - North-Western Europe
+        - South-Western Europe
+        - Eastern Europe
+        - Northern Africa
+        - Southern Africa
+        - Middle East
+        - Central Africa
+        - North America
+        - Central America
+        - South America
+        - Caribbean
+        - Oceania
+        - Global (multiple locations)
     validations:
       required: true
   - type: dropdown
