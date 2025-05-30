@@ -62,3 +62,4 @@ name,description,website,region,category,country,city_state,member_count,status,
 "OpenChain China Work Group","OpenChain Project","https://openchainproject.org/participate","Eastern Asia","Others","China",,,"Active","OpenChain Chapter","hybrid"
 "Ubuntu Korea Community","Ubuntu Chapter","https://ubuntu-kr.org","Eastern Asia","Others","South Korea",,,"Active","Ubuntu Chapter","hybrid"
 "Kaiyuanshe Alliance City Communities","Kaiyuanshe","https://kaiyuanshe.cn/community","Eastern Asia","Others","China",,,"Active","Kaiyuanshe City Chapters","hybrid"
+"GoFr Community","Open-source Golang framework for accelerated microservice development","https://gofr.dev/","Southern Asia","Cloud Native","India,Bangalore","11000","Active","CNCF Ecosystem","hybrid"
