@@ -45,6 +45,13 @@ fallback_coords <- tribble(
   "Southern Asia", 23.0, 80.0,
   "Western Asia", 35.0, 40.0,
   "Central Asia", 45.0, 68.0,
+  "Africa", 8.7832, 20.5085,
+  "North America", 37.0902, -95.7129,
+  "South America", -14.2350, -51.9253,
+  "Central America", 15.7835, -90.2308,
+  "Eastern Europe", 50.4501, 30.5234,
+  "Western Europe", 48.8566, 2.3522,
+  "Asia Pacific", -25.2744, 133.7751,
   "Other", 20.0, 0.0
 )
 
@@ -67,7 +74,29 @@ country_coords <- tribble(
   "Sri Lanka", 7.8731, 80.7718,
   "United Arab Emirates", 23.4241, 53.8478,
   "Saudi Arabia", 23.8859, 45.0792,
-  "Azerbaijan", 40.1431, 47.5769
+  "Azerbaijan", 40.1431, 47.5769,
+  "United Kingdom", 55.3781, -3.4360,
+  "Germany", 51.1657, 10.4515,
+  "France", 46.2276, 2.2137,
+  "Spain", 40.4637, -3.7492,
+  "Italy", 41.8719, 12.5674,
+  "Netherlands", 52.1326, 5.2913,
+  "Canada", 56.1304, -106.3468,
+  "United States", 37.0902, -95.7129,
+  "Mexico", 23.6345, -102.5528,
+  "Brazil", -14.2350, -51.9253,
+  "Argentina", -38.4161, -63.6167,
+  "Colombia", 4.5709, -74.2973,
+  "South Africa", -30.5595, 22.9375,
+  "Nigeria", 9.0820, 8.6753,
+  "Kenya", -1.2921, 36.8219,
+  "Australia", -25.2744, 133.7751,
+  "New Zealand", -40.9006, 174.8860,
+  "Philippines", 12.8797, 121.7740,
+  "Russia", 61.5240, 105.3188,
+  "Turkey", 38.9637, 35.2433,
+  "Israel", 31.0461, 34.8516,
+  "Egypt", 26.8206, 30.8025
 )
 
 # Fallback coordinates for major cities
@@ -230,7 +259,12 @@ region_colors <- tribble(
   "Southern Asia", "#2ecc71",  # Green
   "Western Asia", "#9b59b6",  # Purple
   "Central Asia", "#f1c40f",  # Yellow
-  "Other", "#7f8c8d"  # Grey for any undefined regions
+  "Africa", "#e67e22",       # Orange
+  "North America", "#e84393", # Pink
+  "South America", "#00b894", # Mint
+  "Europe", "#0984e3",       # Dark Blue
+  "Asia Pacific", "#6c5ce7",  # Purple/Blue
+  "Other", "#7f8c8d"         # Grey for any undefined regions
 )
 
 # Add color to communities based on region
@@ -299,7 +333,7 @@ datatable(
 #| output: html
 leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
-  setView(lng = 80, lat = 30, zoom = 3) %>%
+  setView(lng = 0, lat = 20, zoom = 2) %>%  # Centered on prime meridian with wider view
   # Add markers for each community - ALL communities should appear now
   addCircleMarkers(
     data = communities_with_coords,
