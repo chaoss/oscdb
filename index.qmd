@@ -51,7 +51,6 @@ fallback_coords <- tribble(
   "Central America", 15.7835, -90.2308,
   "Eastern Europe", 50.4501, 30.5234,
   "Western Europe", 48.8566, 2.3522,
-  "Europe", 51.1657, 10.4515,
   "Asia Pacific", -25.2744, 133.7751,
   "Other", 20.0, 0.0
 )
