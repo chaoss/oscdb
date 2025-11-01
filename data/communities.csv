@@ -64,3 +64,5 @@ name,description,website,region,category,country,city_state,member_count,status,
 "Kaiyuanshe Alliance City Communities","Kaiyuanshe","https://kaiyuanshe.cn/community","Eastern Asia","Others","China",,,"Active","Kaiyuanshe City Chapters","hybrid"
 "GoFr Community","Open-source Golang framework for accelerated microservice development","https://gofr.dev/events","Southern Asia","Cloud Native","Bangalore, India","11000","Active",","hybrid"
 "Cloud Native Stockholm","Stockholm Cloud Native Community Group","https://community.cncf.io/cloud-native-stockholm/","Northern Europe","Cloud Native","Sweden","Stockholm","797","Active","CNCF Chapter","In-Person"
+"PyDelhi","Python Delhi User Group","https://pydelhi.org/","Southern Asia","Programming Language","India","New Delhi and NCR metropolitan area","2300","Active","User Group","hybrid"
+"SciPy India","Scientific computing community in India","https://scipy-india.github.io/","Southern Asia","Scientific Computing","India","India","350","Active","Community","hybrid"
